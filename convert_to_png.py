@@ -77,6 +77,22 @@ def convert_wdp_to_png(input_wdp_path, output_png_path):
     except Exception as e:
         print(f"Error converting WDP to PNG: {e}")
 
+def convert_avif_to_png(input_avif_path, output_png_path):
+        ##
+        """
+        Converts an AVIF image to PNG format.
+
+        Args:
+            input_avif_path (str): The path to the input AVIF file.
+            output_png_path (str): The path where the output PNG file will be saved.
+        """
+        try:
+            img = Image.open(input_avif_path)
+            img.save(output_png_path, format='PNG')
+            print(f"Successfully converted '{input_avif_path}' to '{output_png_path}'")
+        except Exception as e:
+            print(f"Error converting AVIF to PNG: {e}")
+
 # how to call these functions samples
 
 input_file = "example.webp"  # Replace with your WebP file path
@@ -120,6 +136,9 @@ for item in var_files:
     elif(file_type.lower() == "tif" or file_type.lower() == "tiff"):
         output_file = file_name + '.' + 'png'
         convert_tiff_to_png(item, output_file)
+    elif(file_type.lower() == "avif"):
+        output_file = file_name + '.' + 'png'
+        convert_avif_to_png(item, output_file)
 
 
     print(f"file_info\n {file_info}")
