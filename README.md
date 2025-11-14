@@ -1,5 +1,5 @@
 # convert_to_png
-take files in a directory and converting TIFF, TIF, WEBP and WDP to PNG
+take files in a directory and converting TIFF, TIF, WEBP, WDP and AVIF to PNG
 
 
 # How to install
