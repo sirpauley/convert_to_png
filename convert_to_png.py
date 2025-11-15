@@ -52,18 +52,11 @@ def supported_file(file_naam) -> bool:
         file_type_dict = get_name_type(file_naam)
         file_type = file_type_dict["file_type"]
 
-
         # over kill IF, but is a good example
         if(file_type in var_file_types):
             return_value = True
         elif(file_type not in var_file_types):
             return_value = False
-
-        ## print(f"supported_file: {supported_file}")
-        """
-        if(return_value):
-           print(f"supported_file: True")
-        """
 
         return return_value
 
