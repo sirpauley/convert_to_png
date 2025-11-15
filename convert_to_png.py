@@ -30,7 +30,7 @@ def get_name_type(file_name:str ='') -> Dict[str, str] :
 
         # test if file_info after split is bigger than 1
         # incase there is a file with no extension
-        if(len(file_info)>1):
+        if len(file_info)>1 :
             file_type = file_info[1]
         else:
             file_type = "None"
@@ -54,9 +54,9 @@ def supported_file(file_naam) -> bool:
         file_type = file_type_dict["file_type"]
 
         # over kill IF, but is a good example
-        if(file_type in var_file_types):
+        if file_type in var_file_types :
             return_value = True
-        elif(file_type not in var_file_types):
+        elif file_type not in var_file_types :
             return_value = False
 
         return return_value
