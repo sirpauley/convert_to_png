@@ -46,6 +46,7 @@ def get_name_type(fileName:str ='') -> Dict[str, str] :
 
 # file type is in list
 def supported_file(file_naam) -> bool:
+        """ Check file_name if it is in my supported list """
         # Set default return value
         return_value:bool= False
 
@@ -61,9 +62,7 @@ def supported_file(file_naam) -> bool:
         return return_value
 
 def convert_wdp_to_png(input_path) -> None:
-    """
-    Converts a WDP (JPEG XR) image to PNG format.
-    """
+    """ Converts a WDP (JPEG XR) image to PNG format. """
     # Read the WDP image data
     wdp_data = imagecodecs.imread(input_path)
 
@@ -88,17 +87,18 @@ def convert_wdp_to_png(input_path) -> None:
     print(f"Successfully converted '{input_path}' to '{output_path}'")
 
 def convert_webp_to_png(input_path):
-    """
-    Converts a WebP image to PNG format.
-    """
+    """ Converts a WebP image to PNG format. """
     # Open the WebP image
     img = Image.open(input_path)
     # Convert to RGB or RGBA mode if necessary to handle transparency
     # 'RGB' for images without transparency, 'RGBA' for images with transparency
-    if img.mode == 'P' or img.mode == 'L' or img.mode == '1': # Handle palette-based or grayscale images
+
+    if img.mode in ('P', 'L', '1'): # Handle palette-based or grayscale images
         img = img.convert('RGBA') # Convert to RGBA for potential transparency in PNG
-    elif img.mode != 'RGBA' and img.mode != 'RGB':
+
+    if img.mode not in ('RGB', 'RGBA'):
         img = img.convert('RGBA') # Ensure a compatible mode for PNG
+
     
     # Get output file name
     output_path = output_path_func(input_path)
@@ -109,6 +109,7 @@ def convert_webp_to_png(input_path):
 
 
 def convert_tiff_to_png(input_path) -> None:
+    """ converts TIFF to PNG """
     # Open the TIFF image
     with Image.open(input_path) as img:
         # Save it as a PNG
@@ -120,13 +121,7 @@ def convert_tiff_to_png(input_path) -> None:
     print(f"Successfully converted '{input_path}' to '{output_path}'")
 
 def convert_avif_to_png(input_avif_path):
-        """
-        Converts an AVIF image to PNG format.
-
-        Args:
-            input_avif_path (str): The path to the input AVIF file.
-            output_png_path (str): The path where the output PNG file will be saved.
-        """
+        """ Converts an AVIF image to PNG format. """
         try:
             img = Image.open(input_avif_path)
 
@@ -136,7 +131,7 @@ def convert_avif_to_png(input_avif_path):
 
             img.save(output_path, format='PNG')
             print(f"Successfully converted '{input_avif_path}' to '{output_path}'")
-        except Exception as e:
+        except ValueError as e:
             print(f"Error converting AVIF to PNG: {e}")
 
 def ___main___ () -> None:
