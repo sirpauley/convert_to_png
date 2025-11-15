@@ -8,4 +8,4 @@ and convert it to **PNG** with the same name, and same directory
 
 # How to install on windows to be called to from anywhere
 * step 1 - create a folder called "Script"
-* Step 2 - be patient
+* Step 2 - be patient ( Still working on this part)
