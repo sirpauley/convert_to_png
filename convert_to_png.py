@@ -1,7 +1,4 @@
-### Convert TIF, TIFF, WEBP and WDP to png
-### By scanning all the files in files directory
-### Save them with the same file name
-### as PNG
+### Convert TIF, TIFF, WEBP, WDP, AVIF to png
 
 # Imports
 import os
@@ -185,14 +182,16 @@ def ___main___ () -> None:
         item_type = item_dict["file_type"]
 
         if(supported_file(item)):
-            if(item_type == "wdp"):
-                convert_wdp_to_png(item)
-            elif(item_type == "webp"):
-                 convert_webp_to_png(item)
-            elif(item_type == "tif" or item_type == "tiff"):
-                 convert_tiff_to_png(item)
-            elif(item_type == "avif"):
-                 convert_avif_to_png(item)
+            match item_type:
+                case "wdp":
+                    convert_wdp_to_png(item)
+                case "webp":
+                    convert_webp_to_png(item)
+                case "tif" | "tiff":
+                    convert_tiff_to_png(item) 
+                case "avif":
+                    convert_avif_to_png(item) 
+
 
         ## item_type = item_dict["file_type"]
 
