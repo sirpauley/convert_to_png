@@ -8,21 +8,17 @@ from typing import Dict
 from PIL import Image
 import imagecodecs
 
-# Var list of files
+# var list of supported files
 var_file_types: list[str] = ["webp", "wdp", "tif", "tiff", "avif"]
 
-
-# get output path
 def output_path_func(input_path) -> str:
-    """Create new name for png file"""
+    """Create new name for png file as output path"""
     # Get output file name
     output_data = get_name_type(input_path)
     output_path = output_data["file_name"] + ".png"
 
     return output_path
 
-
-# get file_name and type
 def get_name_type(file_name: str = "") -> Dict[str, str]:
     """split file name at the dot and return a list with file name and type"""
     # declare return value
