@@ -18,23 +18,23 @@ def output_path_func(input_path) -> str:
     return output_path
 
 # get file_name and type
-def get_name_type(fileName:str ='') -> Dict[str, str] :
+def get_name_type(file_name:str ='') -> Dict[str, str] :
         # declare return value
         return_dictionary = {}
 
         ## print(file_naam)
-        file_info = fileName.split('.')
+        file_info = file_name.split('.')
 
         # get file name
         file_name = file_info[0]
 
         # test if file_info after split is bigger than 1
-        # incase there is a file with no extension 
+        # incase there is a file with no extension
         if(len(file_info)>1):
             file_type = file_info[1]
         else:
             file_type = "None"
-        
+
         # make sure file type is lowercase
         file_type = file_type.lower()
 
@@ -99,7 +99,7 @@ def convert_webp_to_png(input_path):
     if img.mode not in ('RGB', 'RGBA'):
         img = img.convert('RGBA') # Ensure a compatible mode for PNG
 
-    
+
     # Get output file name
     output_path = output_path_func(input_path)
 
@@ -155,9 +155,9 @@ def ___main___ () -> None:
                 case "webp":
                     convert_webp_to_png(item)
                 case "tif" | "tiff":
-                    convert_tiff_to_png(item) 
+                    convert_tiff_to_png(item)
                 case "avif":
-                    convert_avif_to_png(item) 
+                    convert_avif_to_png(item)
 
 
         ## item_type = item_dict["file_type"]
