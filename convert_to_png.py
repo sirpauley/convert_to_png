@@ -9,7 +9,7 @@ from PIL import Image
 import imagecodecs
 
 # var list of supported files
-var_file_types: list[str] = ["webp", "wdp", "tif", "tiff", "avif"]
+var_file_types: list[str] = ["webp", "wdp", "tif", "tiff", "avif", "jfif"]
 
 def output_path_func(input_path) -> str:
     """Create new name for png file as output path"""
@@ -138,6 +138,20 @@ def convert_avif_to_png(input_avif_path):
     except ValueError as e:
         print(f"Error converting AVIF to PNG: {e}")
 
+def convert_jfif_to_png(input_jfif_path)  -> None:
+    """Converts an AVIF image to PNG format."""
+    try:
+        img = Image.open(input_jfif_path)
+
+        # Get output file name
+        output_path = get_name_type(input_jfif_path)
+        output_path = output_path["file_name"] + ".png"
+
+        img.save(output_path, format="PNG")
+        print(f"Successfully converted '{input_jfif_path}' to '{output_path}'")
+    except ValueError as e:
+        print(f"Error converting AVIF to PNG: {e}")
+
 
 def ___main___() -> None:
     # create list of files in directory
@@ -163,6 +177,8 @@ def ___main___() -> None:
                     convert_tiff_to_png(item)
                 case "avif":
                     convert_avif_to_png(item)
+                case "jfif":
+                    convert_jfif_to_png(item)
 
         ## item_type = item_dict["file_type"]
 
