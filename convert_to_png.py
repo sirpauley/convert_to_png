@@ -1,5 +1,5 @@
 """
-This module Convert TIF, TIFF, WEBP, WDP, AVIF to png.
+This module Convert TIF, TIFF, WEBP, WDP, AVIF, JFIF to png.
 """
 
 # Imports
